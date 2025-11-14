@@ -1,5 +1,6 @@
 .banner img {
     border-radius: 20px;
+    width: 100%;
 }
 
 .card {
@@ -22,4 +23,5 @@ textarea {
 
 i {
     font-size: xx-large;
+
 }

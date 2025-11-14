@@ -1,0 +1,25 @@
+.banner img {
+    border-radius: 20px;
+}
+
+.card {
+    border-radius: 20px;
+}
+
+input,
+textarea {
+    border-radius: 10px !important;
+}
+
+.btn-dark {
+    background-color: #36454F;
+}
+
+.navbar-brand img {
+    height: 60px;
+    width: 250px;
+}
+
+i {
+    font-size: xx-large;
+}

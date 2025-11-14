@@ -1,0 +1,4 @@
+admin/ayarlar/baglan.php'de url ve db bilgileri girmeniz yeterlidir. 
+Başlangıç Admin Bilgileri:
+admin@admin.com
+1234

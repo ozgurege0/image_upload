@@ -90,5 +90,51 @@ function uploadImage($fileInputName, $uploadsDir = '../assets/img') {
     return false; // Return false if upload fails
 }
 
+function uploadImage2($fileInputName, $uploadsDir = 'assets/upload_images') {
+    // Dosya yüklendi mi kontrol et
+    if (!isset($_FILES[$fileInputName]) || $_FILES[$fileInputName]['error'] != UPLOAD_ERR_OK) {
+        return false;
+    }
+
+    $tmpName = $_FILES[$fileInputName]["tmp_name"];
+    $name = $_FILES[$fileInputName]["name"];
+
+    // İzin verilen uzantılar
+    $allowedExtensions = ['jpg', 'jpeg', 'png', 'gif', 'webp'];
+
+    // Dosya uzantısını al
+    $ext = strtolower(pathinfo($name, PATHINFO_EXTENSION));
+
+    // Uzantı kontrolü
+    if (!in_array($ext, $allowedExtensions)) {
+        return false; // Geçersiz dosya türü
+    }
+
+    // MIME türünü de kontrol et (ek güvenlik)
+    $mimeType = mime_content_type($tmpName);
+    $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/gif', 'image/webp'];
+    if (!in_array($mimeType, $allowedMimeTypes)) {
+        return false; // Gerçek MIME türü de resim değilse reddet
+    }
+
+    // Benzersiz dosya adı oluştur
+    $uniqueId = rand(20000, 32000) . rand(20000, 32000);
+    $newFileName = $uniqueId . '.' . $ext;
+
+    // Hedef dosya yolu
+    $refImgPath = $uploadsDir . "/" . $newFileName;
+
+    // Klasör yoksa oluştur
+    if (!is_dir($uploadsDir)) {
+        mkdir($uploadsDir, 0755, true);
+    }
+
+    // Dosyayı klasöre taşı
+    if (move_uploaded_file($tmpName, $refImgPath)) {
+        return $refImgPath; // Başarılıysa dosya yolunu döndür
+    }
+
+    return false;
+}
 
 ?>

@@ -3,7 +3,7 @@ require_once("admin/ayarlar/baglan.php");
 
 if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
-$img = uploadImage('img');
+$img = uploadImage2('img');
 
 if ($img) {
 }else{
@@ -65,4 +65,5 @@ require_once("includes/navbar.php");
 
 <?php
 require_once("includes/footer.php");
+
 ?>

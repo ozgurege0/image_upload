@@ -1,4 +1,5 @@
 admin/ayarlar/baglan.php'de url ve db bilgileri girmeniz yeterlidir. 
 Başlangıç Admin Bilgileri:
+https://domain.com/login
 admin@admin.com
 1234
